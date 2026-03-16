@@ -1,0 +1,32 @@
+# chezmoi source directory
+.chezmoi*
+
+# Logs
+*.log
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+*.bak
+
+# LazyVim/LazyNvim cache
+private_dot_config/nvim/.lazy/
+private_dot_config/nvim/.cache/
+
+# Lock files that may contain machine-specific paths
+# private_dot_config/nvim/lazy-lock.json
+
+# Local config overrides (optional)
+private_dot_config/nvim/lua/plugins/local.lua
