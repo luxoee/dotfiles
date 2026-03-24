@@ -21,3 +21,23 @@ vim.keymap.set("t", "<C-k>", [[<C-\><C-n><C-w>k]])
 vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-w>l]])
 
 vim.keymap.set("t", "<Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+
+vim.opt.clipboard = ""
+
+if vim.fn.has('nvim-0.10') == 1 then
+  vim.g.clipboard = {
+    name = 'OSC 52',
+    copy = {
+      ['+'] = require('vim.ui.clipboard.osc52').copy('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').copy('*'),
+    },
+    paste = {
+      ['+'] = require('vim.ui.clipboard.osc52').paste('+'),
+      ['*'] = require('vim.ui.clipboard.osc52').paste('*'),
+    },
+  }
+end
+
+vim.keymap.set('n', '<Leader>y', ':%y+<CR>', { desc = 'Yank all to local clipboard', silent = true })
+vim.keymap.set('v', '<Leader>y', '"+y', { desc = 'Yank selection to local clipboard', silent = true })
+vim.keymap.set('n', '<C-a>', 'ggVG', { desc = 'Select all', noremap = true })
