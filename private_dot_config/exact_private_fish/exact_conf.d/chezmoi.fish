@@ -13,9 +13,19 @@ alias czd='chezmoi diff'
 alias czs='chezmoi status'
 alias czl='chezmoi managed'
 
-# 快速提交并推送所有更改
 function czsync
-    set -l message (test -n "$argv"; and echo "$argv"; or echo "update: (date +'%Y-%m-%d %H:%M:%S')")
+    # 检查是否有参数传入
+    if set -q argv[1]
+        # 如果有参数，将所有参数组合成字符串作为 message
+        set message "$argv"
+    else
+        # 如果没有参数，执行 date 命令生成时间戳
+        set message "update: "(date +'%Y-%m-%d %H:%M:%S')
+    end
+
+    echo "Syncing with message: $message"
+
+    # 执行同步操作
     chezmoi git -- add .
     chezmoi git -- commit -m "$message"
     chezmoi git -- push
