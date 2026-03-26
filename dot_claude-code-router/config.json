@@ -1,0 +1,61 @@
+{
+  "LOG": true,
+  "LOG_LEVEL": "debug",
+  "CLAUDE_PATH": "",
+  "HOST": "127.0.0.1",
+  "PORT": 3456,
+  "APIKEY": "",
+  "API_TIMEOUT_MS": "600000",
+  "PROXY_URL": "",
+  "transformers": [],
+  "Providers": [
+    {
+      "name": "canaan.5090",
+      "api_base_url": "http://10.10.1.16:30040/v1/chat/completions",
+      "api_key": "ollama",
+      "models": [
+        "Qwen3.5-35B-A3B-NVFP4"
+      ],
+      "transformer": {
+        "use": [
+          "openapi",
+          "sampling"
+        ]
+      }
+    },
+    {
+      "name": "cliproxyapi-gpt54",
+      "api_base_url": "http://127.0.0.1:8317/v1/chat/completions",
+      "api_key": "cliproxy-local-key",
+      "models": [
+        "gpt-5.4"
+      ],
+      "transformer": {
+        "use": [
+          "openapi",
+          "sampling"
+        ]
+      }
+    }
+  ],
+  "StatusLine": {
+    "enabled": false,
+    "currentStyle": "default",
+    "default": {
+      "modules": []
+    },
+    "powerline": {
+      "modules": []
+    }
+  },
+  "Router": {
+    "default": "cliproxyapi-gpt54,gpt-5.4",
+    "background": "cliproxyapi-gpt54,gpt-5.4",
+    "think": "cliproxyapi-gpt54,gpt-5.4",
+    "longContext": "cliproxyapi-gpt54,gpt-5.4",
+    "longContextThreshold": 204800,
+    "webSearch": "cliproxyapi-gpt54,gpt-5.4",
+    "image": "cliproxyapi-gpt54,gpt-5.4"
+  },
+  "CUSTOM_ROUTER_PATH": ""
+}
